@@ -11,8 +11,8 @@ import com.example.bindingrecyclerviewapplication.models.LargeNews
 
 class LargeNewsAdapter(
     private val largeNewsList:List<LargeNews>,
-    private val context: Context,
-) : RecyclerView.Adapter<LargeNewsViewHolder>(), CustomClickListener {
+    private val context: Context,private val customClickListener: CustomClickListener
+) : RecyclerView.Adapter<LargeNewsViewHolder>() {
 
     private lateinit var binding: NewLargeItemBinding
 
@@ -24,12 +24,10 @@ class LargeNewsAdapter(
     override fun onBindViewHolder(holder: LargeNewsViewHolder, position: Int) {
         val largeNews = largeNewsList[position]
         holder.bind(largeNews)
-        holder.binding.itemClickListener = this
+        holder.binding.itemClickListener = customClickListener
     }
 
     override fun getItemCount(): Int = largeNewsList.size
 
-    override fun cardClicked(data: LargeNews) {
-        Toast.makeText(context, "Item Clicked", Toast.LENGTH_SHORT).show()
-    }
+
 }
