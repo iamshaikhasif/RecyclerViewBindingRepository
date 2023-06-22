@@ -22,7 +22,7 @@ class LargeNewsAdapter(
     }
 
     override fun onBindViewHolder(holder: LargeNewsViewHolder, position: Int) {
-        val largeNews = largeNewsList[position]
+        val largeNews = largeNewsList.get(position)
         holder.bind(largeNews)
         holder.binding.itemClickListener = customClickListener
     }
